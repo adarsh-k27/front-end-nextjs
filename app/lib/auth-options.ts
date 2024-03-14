@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       // here we need to add a function for adding user into Database from Api server
+      
       const structuredProfile = {
         avatar_url: profile!.avatar_url,
         repos_url: profile?.repos_url,

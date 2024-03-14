@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 const PRIVATE_PATHS={
-    HOME:"/home"
+    HOME:"/dashboard"
  }
  
  const PUBLIC_PATHS={
@@ -49,7 +49,7 @@ export function middleware(request:NextRequest){
     return NextResponse.next()
 }
 export const config={
-    matcher:["/home","/signin"]
+    matcher:["/dashboard","/signin"]
 }
 
 
