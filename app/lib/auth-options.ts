@@ -10,7 +10,6 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID ?? "",
       clientSecret: process.env.GITHUB_CLIENT_SCECRET ?? "",
-
     }),
   ],
 
@@ -18,7 +17,6 @@ export const authOptions: NextAuthOptions = {
     signIn: "/signin", //sigin page
 
   },
-
   session: {
     strategy: "jwt",
   },
@@ -42,7 +40,7 @@ export const authOptions: NextAuthOptions = {
         console.log("error calling", error);
         return false
       }
-      // Save user details to the database when a user signs in
+
     },
     //for creating token including Database details
     async jwt({ token, profile, user, session, account, trigger }) {
