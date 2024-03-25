@@ -2,6 +2,8 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { ROUTES } from '@/utils/constant'
 type Props = {}
 
 export default function HomePage({ }: Props) {
@@ -28,9 +30,9 @@ export default function HomePage({ }: Props) {
       {/* Header */}
       <header className=" text-black p-4 flex justify-between items-center">
         <h1 className="text-xl font-semibold">Projects</h1>
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+        <Link href={ROUTES.NEW_PROJECT} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
           Create New Project
-        </button>
+        </Link>
       </header>
 
       {/* Main content */}
