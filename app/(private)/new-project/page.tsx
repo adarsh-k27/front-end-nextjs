@@ -28,10 +28,10 @@ export default function NewProject({ }: Props) {
         const validForm = newProjectFormValidator.current.allValid()
 
         if (validForm) {
-
+          
         } else {
             newProjectFormValidator.current.showMessages()
-            forceUpdate(_ ^ 1)
+            forceUpdate(_ ^ 1) // NOR operator 
 
         }
         //here we need to call the Api  and gett teh response quickly and load state also        

@@ -14,3 +14,6 @@ const PRIVATE_PATHS={
      ...PUBLIC_PATHS
      
  }
+
+
+ export const API_SERVICE_BASEURL="http://localhost:5000"
