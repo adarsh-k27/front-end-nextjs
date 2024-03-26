@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
+import {decode} from 'next-auth/jwt'
 
 const PRIVATE_PATHS={
     HOME:"/dashboard"
@@ -35,8 +35,8 @@ const PRIVATE_PATHS={
   };
    
 
-export function middleware(request:NextRequest){
-    const session=request.cookies.get("next-auth.session-token")
+export async function middleware(request:NextRequest){
+    const session=request.cookies.get("next-auth.session-token") 
     const pathname=request.nextUrl.pathname
     console.log(PUBLIC_PATHS.isPublicPath(pathname));
     

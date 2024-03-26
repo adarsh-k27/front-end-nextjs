@@ -1,5 +1,6 @@
 "use client"
 
+import axiosAPI_SERVICE_Instance from '@/utils/axios';
 import React, { useRef, useState } from 'react'
 import SimpleReactValidator from 'simple-react-validator';
 
@@ -10,6 +11,7 @@ export default function NewProject({ }: Props) {
 
     const newProjectFormValidator = useRef(new SimpleReactValidator())
     const [_, forceUpdate] = useState(0)
+
     const [form, setForm] = useState({
         projectName: "",
         gitURL: "",
@@ -22,13 +24,15 @@ export default function NewProject({ }: Props) {
         setForm({ ...form, [name]: value })
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const validForm = newProjectFormValidator.current.allValid()
-
+ 
         if (validForm) {
-          
+           const res= await axiosAPI_SERVICE_Instance.post("/health")
+           console.log(res);
+           
         } else {
             newProjectFormValidator.current.showMessages()
             forceUpdate(_ ^ 1) // NOR operator 
@@ -36,7 +40,8 @@ export default function NewProject({ }: Props) {
         }
         //here we need to call the Api  and gett teh response quickly and load state also        
     }
-    console.log("RENDERING ....");
+    
+
 
     return (
         <main>
@@ -63,7 +68,7 @@ export default function NewProject({ }: Props) {
                             </label>
                             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="githubUrl" type="text" name='gitURL' placeholder="Enter GitHub URL" onChange={handleInputChange} />
                             <p className='text-red-800 bg-white/85  font-serif'>
-                                {newProjectFormValidator.current.message('gitURL', form.projectName, 'required|url')}
+                                {newProjectFormValidator.current.message('gitURL', form.projectName, 'required')}
                             </p>
                         </div>
 
